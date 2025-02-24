@@ -5,9 +5,13 @@
 
   align-items: center;
 
-  justify-content: center;
+  justify-content: flex-start;
 
-  margin-top: 76px;
+  margin: 70px 0;
+
+  height: calc(100vh - 70px - 70px);
+
+  background: blue;
 
   @media (max-width: 575px) {
     width: 100%;
