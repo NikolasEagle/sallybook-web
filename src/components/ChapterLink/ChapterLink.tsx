@@ -7,7 +7,7 @@ interface Props {
 
 export default function ChapterLink({ icon, name }: Props) {
   return (
-    <div tabIndex={0} className={styles.ChapterLink}>
+    <div autoFocus tabIndex={0} className={styles.ChapterLink}>
       <img src={icon} alt={name} />
       <p>{name}</p>
     </div>

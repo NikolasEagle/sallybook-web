@@ -1,18 +1,35 @@
-.footer {
+@font-face {
+  font-family: "Logo";
+  src: url("../../fonts/logo.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+.header {
   display: flex;
 
   flex-direction: row;
 
   justify-content: center;
 
+  align-items: center;
+
   position: fixed;
 
-  background: #000000;
+  padding: 10px;
 
-  bottom: 0;
+  top: 0;
 
-  p {
-    color: rgb(243, 216, 166);
+  gap: 10px;
+
+  img {
+    width: 50px;
+    height: 50px;
+  }
+
+  h1 {
+    margin: 0;
+    font-family: "Logo";
   }
 
   @media (max-width: 575px) {

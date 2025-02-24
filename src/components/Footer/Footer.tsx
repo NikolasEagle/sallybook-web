@@ -8,6 +8,11 @@ const chapters = [
     name: "Главная",
   },
   {
+    icon: "/profile.svg",
+
+    name: "Профиль",
+  },
+  {
     icon: "/settings.svg",
 
     name: "Настройки",
