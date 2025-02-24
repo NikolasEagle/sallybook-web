@@ -3,8 +3,8 @@
 import { useEffect } from "react";
 import styles from "./page.module.scss";
 
-export default function Page() {
-  useEffect(() => {}, []);
+import axios from "axios";
 
+export default function Page() {
   return <div className={styles.page}></div>;
 }

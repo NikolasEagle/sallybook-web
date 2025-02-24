@@ -1,0 +1,29 @@
+.ChapterLink {
+  display: flex;
+  flex-direction: column;
+  width: calc(100% / 2);
+  background: green;
+  align-items: center;
+  justify-content: center;
+  transition: 500ms;
+  padding: 10px;
+
+  cursor: pointer;
+
+  img {
+    width: 30px;
+    height: 30px;
+    background: red;
+  }
+
+  p {
+    margin: 0;
+    font-size: 15px;
+  }
+
+  &:hover,
+  &:focus {
+    background: #fff;
+    outline: none;
+  }
+}
