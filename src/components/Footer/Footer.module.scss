@@ -19,22 +19,5 @@
     color: rgb(243, 216, 166);
   }
 
-  @media (max-width: 575px) {
-    width: 100%;
-  }
-
-  @media (min-width: 576px) and (max-width: 767px) {
-    width: 100%;
-  }
-
-  @media (min-width: 768px) and (max-width: 991px) {
-    width: 100%;
-  }
-
-  @media (min-width: 992px) and (max-width: 1999px) {
-    width: 880px;
-  }
-  @media (min-width: 2000px) {
-    width: 880px;
-  }
+  width: 100%;
 }
