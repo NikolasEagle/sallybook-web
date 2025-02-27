@@ -6,7 +6,7 @@ import BookCards from "../BookCards/BookCards";
 
 export default function Contents() {
   return (
-    <div className={styles.Contents}>
+    <div tabIndex={-1} className={styles.Contents}>
       <ResultsInfo />
       <BookCards />
     </div>

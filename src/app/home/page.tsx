@@ -15,6 +15,8 @@ import { useSearchParams } from "next/navigation";
 export default function Home() {
   const dispatch = useDispatch();
 
+  dispatch(SET_BOOKS({ data: [] }));
+
   const searchParams = useSearchParams();
 
   const pageId = searchParams.get("pageId");
@@ -23,7 +25,11 @@ export default function Home() {
 
   async function setBooks(pageId: string | null, query: string | null) {
     try {
-      const response = await axios.get(`/api/books/${pageId}`);
+      const url = query
+        ? `/api/books/search/${query}/${pageId}`
+        : `/api/books/${pageId}`;
+
+      const response = await axios.get(url);
       const body = response.data;
 
       dispatch(SET_BOOKS({ data: body }));
@@ -34,7 +40,7 @@ export default function Home() {
 
   useEffect(() => {
     setBooks(pageId, query);
-  }, []);
+  }, [pageId, query]);
 
   return (
     <div className={styles.home}>
