@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.6.0",
-    "axios": "^1.7.9",
+    "axios": "^1.8.1",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
@@ -25,5 +25,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
     "typescript": "^5"
-  }
+  },
+  "proxy": "http://localhost:8080"
 }
