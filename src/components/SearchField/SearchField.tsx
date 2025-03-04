@@ -17,7 +17,11 @@ export default function SearchField() {
   }
 
   return (
-    <form onSubmit={(event) => search(event)} className={styles.SearchField}>
+    <form
+      autoComplete="off"
+      onSubmit={(event) => search(event)}
+      className={styles.SearchField}
+    >
       <input name="query" type="text" placeholder="Поиск книг..." />
     </form>
   );

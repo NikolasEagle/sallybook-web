@@ -1,6 +1,8 @@
 .BookCard {
   display: flex;
 
+  cursor: pointer;
+
   align-items: flex-end;
 
   justify-content: center;
@@ -13,9 +15,16 @@
 
   background: blue;
 
+  transition: 500ms;
+
   img {
     width: calc((880px - 100px) / 5);
     height: 220px;
     border-radius: 10px;
+  }
+
+  &:focus,
+  &:hover {
+    transform: scale(1.05);
   }
 }

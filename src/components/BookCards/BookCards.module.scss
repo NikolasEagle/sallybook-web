@@ -1,13 +1,17 @@
 .BookCards {
   display: flex;
 
-  align-items: center;
+  align-items: flex-start;
 
   justify-content: center;
 
   gap: 15px;
 
+  width: 100%;
+
   flex-direction: row;
+
+  padding: 10px;
 
   flex-wrap: wrap;
 }

@@ -8,9 +8,13 @@ import Download from "../Download/Download";
 export default function BookCards() {
   const data = useSelector((state) => state.books.data.data);
 
-  return (
+  return data ? (
     <div className={styles.BookCards}>
-      {data ? data.map((book) => <BookCard data={book} />) : <Download />}
+      {data.map((book) => (
+        <BookCard data={book} />
+      ))}
     </div>
+  ) : (
+    <Download />
   );
 }
