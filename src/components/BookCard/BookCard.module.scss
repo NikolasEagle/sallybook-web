@@ -1,5 +1,20 @@
+@keyframes show {
+  from {
+    transform: scale(0.8);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
 .BookCard {
+  animation: show 1s;
+
   display: flex;
+
+  position: relative;
+
+  flex-direction: column;
 
   cursor: pointer;
 
@@ -9,22 +24,49 @@
 
   border-radius: 10px;
 
-  width: calc((880px - 100px) / 5);
+  width: calc((880px - 100px) / 4);
 
-  height: 220px;
+  height: 280px;
 
-  background: blue;
+  background: #000000;
 
   transition: 500ms;
 
   img {
-    width: calc((880px - 100px) / 5);
-    height: 220px;
+    position: absolute;
+    width: calc((880px - 100px) / 4);
+    height: 280px;
     border-radius: 10px;
   }
 
-  &:focus,
-  &:hover {
+  .shadow {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc((880px - 100px) / 4);
+    height: 280px;
+    background: linear-gradient(to top, black, transparent, black);
+    z-index: 1;
+    border-radius: 10px;
+
+    padding: 10px;
+
+    .title,
+    .author {
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 15px;
+      color: rgb(243, 216, 166);
+    }
+  }
+
+  &:hover,
+  &:focus {
     transform: scale(1.05);
   }
 }
