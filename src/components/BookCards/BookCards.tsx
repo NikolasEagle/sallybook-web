@@ -5,12 +5,20 @@ import { useSelector } from "react-redux";
 import BookCard from "../BookCard/BookCard";
 import Download from "../Download/Download";
 
-export default function BookCards() {
-  const data = useSelector((state) => state.books.data.data);
+interface Data {
+  volumeInfo: {
+    title: string;
+    authors: [];
+    imageLinks: { thumbnail: string; smallThumbnail: string };
+  };
+}
 
-  return data ? (
+export default function BookCards() {
+  const books = useSelector((state) => state.books.data);
+
+  return books.data.data ? (
     <div className={styles.BookCards}>
-      {data.map((book) => (
+      {books.data.data.map((book: Data) => (
         <BookCard data={book} />
       ))}
     </div>

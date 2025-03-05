@@ -6,15 +6,14 @@ import { useSelector } from "react-redux";
 export default function ResultsInfo() {
   const query = useSearchParams().get("query");
 
-  const data = useSelector((state) => state.books.data);
+  const books = useSelector((state) => state.books.data);
 
   const totalItems = useSelector((state) =>
     state.books.data.totalItems ? state.books.data.totalItems : null
   );
 
-  console.log(totalItems);
   return (
-    Object.keys(data).length > 0 && (
+    Object.keys(books.data).length > 0 && (
       <div className={styles.ResultsInfo}>
         {query && (
           <h4>
