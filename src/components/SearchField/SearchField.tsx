@@ -2,14 +2,21 @@ import { useRouter } from "next/navigation";
 import styles from "./SearchField.module.scss";
 
 import { FormEvent } from "react";
+import { useDispatch } from "react-redux";
+
+import { SET_BOOKS } from "@/lib/features/books/booksSlice";
 
 export default function SearchField() {
   const router = useRouter();
+
+  const dispatch = useDispatch();
 
   function search(event: FormEvent) {
     event.preventDefault();
 
     const query = new FormData(event.target).get("query");
+
+    dispatch(SET_BOOKS(null));
 
     router.push(`/home?pageId=1&query=${query}`);
 

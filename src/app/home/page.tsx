@@ -6,9 +6,9 @@ import ResultsInfo from "@/components/ResultsInfo/ResultsInfo";
 import Contents from "@/components/Contents/Contents";
 
 import { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { SET_BOOKS } from "@/lib/features/books/booksSlice";
+import { SET_BOOKS, SET_LOADING } from "@/lib/features/books/booksSlice";
 
 import axios from "axios";
 import { useSearchParams } from "next/navigation";
@@ -22,10 +22,12 @@ export default function Home() {
 
   const query = searchParams.get("query");
 
-  dispatch(SET_BOOKS({ data: {} }));
+  const books = useSelector((state) => state.books.books);
 
   async function setBooks(pageId: string | null, query: string | null) {
     try {
+      dispatch(SET_LOADING(true));
+
       const url = query
         ? `/api/books/search/${query}/${pageId}`
         : `/api/books/${pageId}`;
@@ -33,7 +35,12 @@ export default function Home() {
       const response = await axios.get(url);
       const body = response.data;
 
-      dispatch(SET_BOOKS({ data: body }));
+      body.data = books ? [...books.data, ...body.data] : [...body.data];
+
+      console.log(body);
+
+      dispatch(SET_BOOKS(body));
+      dispatch(SET_LOADING(false));
     } catch (error) {
       console.log(error);
     }

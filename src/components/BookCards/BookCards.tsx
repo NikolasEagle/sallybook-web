@@ -14,15 +14,13 @@ interface Data {
 }
 
 export default function BookCards() {
-  const books = useSelector((state) => state.books.data);
+  const books = useSelector((state) => state.books.books);
 
-  return books.data.data ? (
+  return books ? (
     <div className={styles.BookCards}>
-      {books.data.data.map((book: Data) => (
+      {books.data.map((book: Data) => (
         <BookCard data={book} />
       ))}
     </div>
-  ) : (
-    <Download />
-  );
+  ) : null;
 }
