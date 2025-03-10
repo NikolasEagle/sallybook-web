@@ -10,7 +10,10 @@ export default function ResultsInfo() {
 
   return (
     books && (
-      <div className={styles.ResultsInfo}>
+      <div
+        className={styles.ResultsInfo}
+        style={books.totalItems ? { padding: "10px" } : { padding: "0" }}
+      >
         {query && (
           <h4>
             По запросу - <span>{query?.toUpperCase()}</span> -

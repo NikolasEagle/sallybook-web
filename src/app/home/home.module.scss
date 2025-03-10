@@ -1,17 +1,15 @@
 .home {
   display: flex;
 
+  box-sizing: border-box;
+
   flex-direction: column;
 
   align-items: center;
 
   justify-content: flex-start;
 
-  margin: 70px 0;
-
-  background: red;
-
-  height: calc(100vh - 70px - 70px);
+  height: calc(100svh - 70px * 2);
 
   @media (max-width: 575px) {
     width: 100%;
