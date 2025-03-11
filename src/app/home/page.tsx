@@ -1,17 +1,21 @@
 "use client";
 
 import styles from "./home.module.scss";
+
 import SearchField from "@/components/SearchField/SearchField";
 import ResultsInfo from "@/components/ResultsInfo/ResultsInfo";
 import Contents from "@/components/Contents/Contents";
+
+import { useSearchParams } from "next/navigation";
 
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { SET_BOOKS, SET_LOADING } from "@/lib/features/books/booksSlice";
 
+import { StateBooks } from "@/lib/features/books/booksSlice";
+
 import axios from "axios";
-import { useSearchParams } from "next/navigation";
 
 export default function Home() {
   const dispatch = useDispatch();
@@ -22,7 +26,7 @@ export default function Home() {
 
   const query = searchParams.get("query");
 
-  const books = useSelector((state) => state.books.books);
+  const books = useSelector((state: StateBooks) => state.books.books);
 
   async function setBooks(pageId: number, query: string | null) {
     try {
@@ -35,7 +39,7 @@ export default function Home() {
 
         const body = response.data;
 
-        body.data = books ? [...books.data, ...body.data] : [...body.data];
+        body.data = [...body.data];
 
         dispatch(SET_BOOKS(body));
       } else {
@@ -48,7 +52,7 @@ export default function Home() {
 
           const body = response.data;
 
-          body.data = books ? [...books.data, ...body.data] : [...body.data];
+          body.data = [...books.data, ...body.data];
 
           dispatch(SET_BOOKS(body));
         }

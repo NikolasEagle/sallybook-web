@@ -7,8 +7,34 @@ const initialState = {
   isLoading: true,
   scrollPosition: localStorage.getItem("scrollPosition")
     ? JSON.parse(localStorage.getItem("scrollPosition"))
-    : null,
+    : 0,
 };
+
+export interface StateBooks {
+  books: {
+    books: {
+      currentPage: number;
+
+      totalItems: number;
+
+      data:
+        | {
+            volumeInfo: {
+              title: string;
+              authors: [];
+              imageLinks: { thumbnail: string; smallThumbnail: string };
+            };
+          }[]
+        | [];
+
+      nextPage: number | null;
+    };
+
+    isLoading: boolean;
+
+    scrollPosition: number;
+  };
+}
 
 const booksSlice = createSlice({
   name: "books",

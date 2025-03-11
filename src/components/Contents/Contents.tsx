@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import Download from "../Download/Download";
 import { useRef, useEffect } from "react";
 
+import { StateBooks } from "@/lib/features/books/booksSlice";
+
 export default function Contents() {
   const router = useRouter();
 
@@ -22,21 +24,24 @@ export default function Contents() {
 
   const query = searchParams.get("query");
 
-  const booksNextPage = useSelector((state) =>
+  const booksNextPage = useSelector((state: StateBooks) =>
     state.books.books ? state.books.books.nextPage : null
   );
 
-  const isLoading = useSelector((state) => state.books.isLoading);
+  const isLoading = useSelector((state: StateBooks) => state.books.isLoading);
 
-  const scrollPosition = useSelector((state) => state.books.scrollPosition);
+  const scrollPosition: number = useSelector(
+    (state: StateBooks) => state.books.scrollPosition
+  );
 
-  const contentsRef = useRef(null);
+  const contentsRef = useRef<HTMLDivElement>(null);
 
-  function addBooks(event) {
-    dispatch(SET_SCROLL(event.target.scrollTop));
+  function addBooks(event: React.UIEvent<HTMLDivElement>) {
+    dispatch(SET_SCROLL(event.currentTarget.scrollTop));
     if (
-      event.target.scrollTop >=
-        (event.target.scrollHeight - event.target.clientHeight) * 0.75 &&
+      event.currentTarget.scrollTop >=
+        (event.currentTarget.scrollHeight - event.currentTarget.clientHeight) *
+          0.75 &&
       booksNextPage &&
       !isLoading
     ) {
@@ -46,7 +51,9 @@ export default function Contents() {
   }
 
   useEffect(() => {
-    contentsRef.current.scrollTop = scrollPosition;
+    const contents: HTMLDivElement | null = contentsRef.current;
+
+    contents!.scrollTop = scrollPosition;
   }, []);
 
   return (

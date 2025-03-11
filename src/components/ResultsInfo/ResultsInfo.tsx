@@ -1,12 +1,15 @@
-import { useSearchParams } from "next/navigation";
 import styles from "./ResultsInfo.module.scss";
 
+import { useSearchParams } from "next/navigation";
+
 import { useSelector } from "react-redux";
+
+import { StateBooks } from "@/lib/features/books/booksSlice";
 
 export default function ResultsInfo() {
   const query = useSearchParams().get("query");
 
-  const books = useSelector((state) => state.books.books);
+  const books = useSelector((state: StateBooks) => state.books.books);
 
   return (
     books && (

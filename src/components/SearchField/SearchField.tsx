@@ -1,5 +1,6 @@
-import { useRouter } from "next/navigation";
 import styles from "./SearchField.module.scss";
+
+import { useRouter } from "next/navigation";
 
 import { FormEvent } from "react";
 import { useDispatch } from "react-redux";
@@ -11,10 +12,12 @@ export default function SearchField() {
 
   const dispatch = useDispatch();
 
-  function search(event: FormEvent) {
+  function search(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    const query = new FormData(event.target).get("query");
+    const form = event.currentTarget;
+
+    const query = new FormData(form).get("query");
 
     dispatch(SET_BOOKS(null));
 
@@ -22,7 +25,9 @@ export default function SearchField() {
 
     dispatch(SET_LOADING(true));
 
-    event.target.querySelector("input").value = "";
+    const searchField: HTMLInputElement | null = form.querySelector("input");
+
+    searchField!.value = "";
   }
 
   return (
