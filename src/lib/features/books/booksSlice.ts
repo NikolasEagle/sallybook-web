@@ -38,6 +38,14 @@ export interface StateBooks {
     selectedBook: {
       title: string;
       authors: string[] | [];
+      publisher: string | null;
+      publishedDate: string | null;
+      industryIdentifiers: {
+        type: string;
+        identifier: string;
+      }[];
+      pageCount: number;
+      categories: string[];
       imageLinks: {
         smallThumbnail: string | undefined;
 
