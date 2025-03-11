@@ -1,0 +1,50 @@
+.ReadBookButton {
+  position: fixed;
+  bottom: 70px;
+  width: 100vw;
+  height: 70px;
+  background: #000000;
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(243, 216, 166);
+  padding: 10px;
+  button {
+    height: 50px;
+    background: none;
+    cursor: pointer;
+    border: 1px solid rgb(243, 216, 166);
+    color: rgb(243, 216, 166);
+    border-radius: 10px;
+    outline: none;
+    font-weight: bold;
+
+    transition: 500ms;
+
+    &:focus,
+    &:hover {
+      background: rgb(243, 216, 166);
+      color: #000000;
+    }
+
+    @media (max-width: 575px) {
+      width: 100%;
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+      width: 100%;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      width: 100%;
+    }
+
+    @media (min-width: 992px) and (max-width: 1999px) {
+      width: 880px;
+    }
+    @media (min-width: 2000px) {
+      width: 880px;
+    }
+  }
+}

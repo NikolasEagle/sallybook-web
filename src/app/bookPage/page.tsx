@@ -3,6 +3,8 @@
 import styles from "./bookPage.module.scss";
 
 import TitleBook from "@/components/TitleBook/TitleBook";
+import ContentsBook from "@/components/ContentsBook/ContentsBook";
+import ReadBookButton from "@/components/ReadBookButton/ReadBookButton";
 
 import { useSearchParams } from "next/navigation";
 
@@ -48,8 +50,8 @@ export default function BookPage() {
   return (
     <div className={styles.bookPage}>
       <TitleBook />
-      {/*<ContentsBook />
-        <ReadBookButton />*/}
+      <ContentsBook />
+      <ReadBookButton />
     </div>
   );
 }

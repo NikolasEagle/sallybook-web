@@ -37,6 +37,20 @@ export interface StateBooks {
 
     selectedBook: {
       title: string;
+      authors: string[] | [];
+      imageLinks: {
+        smallThumbnail: string | undefined;
+
+        thumbnail: string | undefined;
+
+        small: string | undefined;
+
+        medium: string | undefined;
+
+        large: string | undefined;
+
+        extraLarge: string | undefined;
+      };
     };
   };
 }
