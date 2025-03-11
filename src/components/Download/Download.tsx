@@ -6,6 +6,7 @@ export default function Download() {
 
   return (
     <div
+      id="download"
       style={isLoading ? { display: "flex" } : { display: "none" }}
       className={styles.Download}
     >

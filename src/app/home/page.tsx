@@ -18,28 +18,42 @@ export default function Home() {
 
   const searchParams = useSearchParams();
 
-  const pageId = searchParams.get("pageId");
+  const pageId: number = Number(searchParams.get("pageId"));
 
   const query = searchParams.get("query");
 
   const books = useSelector((state) => state.books.books);
 
-  async function setBooks(pageId: string | null, query: string | null) {
+  async function setBooks(pageId: number, query: string | null) {
     try {
-      dispatch(SET_LOADING(true));
+      if (!books) {
+        const url = query
+          ? `/api/books/search/${query}/${pageId}`
+          : `/api/books/${pageId}`;
 
-      const url = query
-        ? `/api/books/search/${query}/${pageId}`
-        : `/api/books/${pageId}`;
+        const response = await axios.get(url);
 
-      const response = await axios.get(url);
-      const body = response.data;
+        const body = response.data;
 
-      body.data = books ? [...books.data, ...body.data] : [...body.data];
+        body.data = books ? [...books.data, ...body.data] : [...body.data];
 
-      console.log(body);
+        dispatch(SET_BOOKS(body));
+      } else {
+        if (books.currentPage !== pageId) {
+          const url = query
+            ? `/api/books/search/${query}/${pageId}`
+            : `/api/books/${pageId}`;
 
-      dispatch(SET_BOOKS(body));
+          const response = await axios.get(url);
+
+          const body = response.data;
+
+          body.data = books ? [...books.data, ...body.data] : [...body.data];
+
+          dispatch(SET_BOOKS(body));
+        }
+      }
+
       dispatch(SET_LOADING(false));
     } catch (error) {
       console.log(error);
