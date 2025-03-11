@@ -39,8 +39,6 @@ export default function Home() {
 
         const body = response.data;
 
-        body.data = [...body.data];
-
         dispatch(SET_BOOKS(body));
       } else {
         if (books.currentPage !== pageId) {

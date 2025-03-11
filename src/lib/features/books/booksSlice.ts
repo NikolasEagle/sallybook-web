@@ -8,6 +8,7 @@ const initialState = {
   scrollPosition: localStorage.getItem("scrollPosition")
     ? JSON.parse(localStorage.getItem("scrollPosition"))
     : 0,
+  selectedBook: null,
 };
 
 export interface StateBooks {
@@ -33,6 +34,10 @@ export interface StateBooks {
     isLoading: boolean;
 
     scrollPosition: number;
+
+    selectedBook: {
+      title: string;
+    };
   };
 }
 
@@ -51,8 +56,12 @@ const booksSlice = createSlice({
       state.scrollPosition = action.payload;
       localStorage.setItem("scrollPosition", JSON.stringify(action.payload));
     },
+    SELECT_BOOK: (state, action) => {
+      state.selectedBook = action.payload;
+    },
   },
 });
 
-export const { SET_BOOKS, SET_LOADING, SET_SCROLL } = booksSlice.actions;
+export const { SET_BOOKS, SET_LOADING, SET_SCROLL, SELECT_BOOK } =
+  booksSlice.actions;
 export default booksSlice.reducer;

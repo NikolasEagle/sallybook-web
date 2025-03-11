@@ -1,7 +1,10 @@
 import styles from "./BookCard.module.scss";
 
+import { useRouter } from "next/navigation";
+
 interface Props {
   data: {
+    id: string;
     volumeInfo: {
       title: string;
       authors: [];
@@ -11,8 +14,16 @@ interface Props {
 }
 
 export default function BookCard({ data }: Props) {
+  const router = useRouter();
+
+  const bookId = data.id;
+
+  function openBook() {
+    router.push(`/bookPage?bookId=${bookId}`);
+  }
+
   return (
-    <div tabIndex={0} className={styles.BookCard}>
+    <div onClick={openBook} tabIndex={0} className={styles.BookCard}>
       <img
         src={
           data.volumeInfo.imageLinks
