@@ -1,7 +1,14 @@
 .BookInfo {
   flex: 1;
-  background: red;
   display: flex;
+  gap: 5px;
   flex-direction: column;
   justify-content: center;
+  div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 5px;
+  }
 }

@@ -25,8 +25,6 @@ export default function BookPage() {
 
   async function selectBook(bookId: string | null) {
     try {
-      dispatch(SET_LOADING(true));
-
       dispatch(SELECT_BOOK(null));
 
       const url = `/api/book/${bookId}`;

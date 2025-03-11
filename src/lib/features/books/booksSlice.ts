@@ -40,6 +40,7 @@ export interface StateBooks {
       authors: string[] | [];
       publisher: string | null;
       publishedDate: string | null;
+      description: string | null;
       industryIdentifiers: {
         type: string;
         identifier: string;

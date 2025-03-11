@@ -11,30 +11,41 @@ export default function BookInfo() {
 
   return selectedBook ? (
     <div className={styles.BookInfo}>
-      <p>
-        <b>Издатель:</b> {selectedBook.publisher}
-      </p>
-      <p>
-        <b>Дата издания:</b>{" "}
-        {selectedBook.publishedDate?.split("-").reverse().join(".")}
-      </p>
-      {selectedBook.industryIdentifiers && (
-        <p>
-          <b>ISBN: </b>
-          {
-            selectedBook.industryIdentifiers.find(
-              (elem) => elem.type === "ISBN_13"
-            )?.identifier
-          }
-        </p>
+      {selectedBook.publisher && (
+        <div>
+          <h4>Издатель:</h4>
+          <p>{selectedBook.publisher}</p>
+        </div>
       )}
-      <p>
-        <b>Количество страниц:</b> {selectedBook.pageCount}
-      </p>
+      {selectedBook.publishedDate && (
+        <div>
+          <h4>Дата издания:</h4>
+          <p>{selectedBook.publishedDate?.split("-").reverse().join(".")}</p>
+        </div>
+      )}
+      {selectedBook.industryIdentifiers && (
+        <div>
+          <h4>ISBN:</h4>
+          <p>
+            {
+              selectedBook.industryIdentifiers.find(
+                (elem) => elem.type === "ISBN_13"
+              )?.identifier
+            }
+          </p>
+        </div>
+      )}
+      {selectedBook.industryIdentifiers && (
+        <div>
+          <h4>Количество страниц:</h4>
+          <p>{selectedBook.pageCount}</p>
+        </div>
+      )}
       {selectedBook.categories && (
-        <p>
-          <b>Категории:</b> {selectedBook.categories.slice(0, 1).join(" / ")}
-        </p>
+        <div>
+          <h4>Категории:</h4>
+          <p>{selectedBook.categories.slice(0, 1).join(" / ")}</p>
+        </div>
       )}
     </div>
   ) : null;

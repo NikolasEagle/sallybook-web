@@ -2,6 +2,10 @@ import styles from "./BookCard.module.scss";
 
 import { useRouter } from "next/navigation";
 
+import { useDispatch } from "react-redux";
+
+import { SET_LOADING } from "@/lib/features/books/booksSlice";
+
 interface Props {
   data: {
     id: string;
@@ -16,9 +20,12 @@ interface Props {
 export default function BookCard({ data }: Props) {
   const router = useRouter();
 
+  const dispatch = useDispatch();
+
   const bookId = data.id;
 
   function openBook() {
+    dispatch(SET_LOADING(true));
     router.push(`/bookPage?bookId=${bookId}`);
   }
 
