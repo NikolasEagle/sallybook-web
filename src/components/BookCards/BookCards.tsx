@@ -11,11 +11,11 @@ export default function BookCards() {
 
   console.log(books);
 
-  return books ? (
-    <div className={styles.BookCards}>
-      {books.data.map((book) => (
-        <BookCard data={book} />
-      ))}
-    </div>
-  ) : null;
+  return (
+    books && (
+      <div className={styles.BookCards}>
+        {books.data && books.data.map((book) => <BookCard data={book} />)}
+      </div>
+    )
+  );
 }

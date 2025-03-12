@@ -11,9 +11,14 @@ export default function TitleBook() {
 
   const authors = selectedBook ? selectedBook.authors : [];
   return (
-    <div className={styles.TitleBook}>
-      <h4>{authors && authors.join(", ")}</h4>
-      <h5>{title}</h5>
+    <div
+      style={
+        title || authors.length > 0 ? { padding: "10px" } : { padding: "0" }
+      }
+      className={styles.TitleBook}
+    >
+      {authors.length > 0 && <h4>{authors.join(", ")}</h4>}
+      {title && <h5>{title}</h5>}
     </div>
   );
 }

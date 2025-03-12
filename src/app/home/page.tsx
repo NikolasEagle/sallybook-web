@@ -11,7 +11,11 @@ import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { SET_BOOKS, SET_LOADING } from "@/lib/features/books/booksSlice";
+import {
+  SET_BOOKS,
+  SET_LOADING,
+  SET_SCROLL,
+} from "@/lib/features/books/booksSlice";
 
 import { StateBooks } from "@/lib/features/books/booksSlice";
 
@@ -30,31 +34,17 @@ export default function Home() {
 
   async function setBooks(pageId: number, query: string | null) {
     try {
-      if (!books) {
-        const url = query
-          ? `/api/books/search/${query}/${pageId}`
-          : `/api/books/${pageId}`;
+      const url = query
+        ? `/api/books/search/${query}/${pageId}`
+        : `/api/books/${pageId}`;
 
-        const response = await axios.get(url);
+      const response = await axios.get(url);
 
-        const body = response.data;
+      const body = response.data;
 
-        dispatch(SET_BOOKS(body));
-      } else {
-        if (books.currentPage !== pageId) {
-          const url = query
-            ? `/api/books/search/${query}/${pageId}`
-            : `/api/books/${pageId}`;
+      body.data = books ? [...books.data, ...body.data] : [...body.data];
 
-          const response = await axios.get(url);
-
-          const body = response.data;
-
-          body.data = [...books.data, ...body.data];
-
-          dispatch(SET_BOOKS(body));
-        }
-      }
+      dispatch(SET_BOOKS(body));
 
       dispatch(SET_LOADING(false));
     } catch (error) {

@@ -18,6 +18,8 @@ export interface StateBooks {
 
       totalItems: number;
 
+      query: string | null;
+
       data:
         | {
             volumeInfo: {

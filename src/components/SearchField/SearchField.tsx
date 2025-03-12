@@ -1,6 +1,6 @@
 import styles from "./SearchField.module.scss";
 
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 import { FormEvent } from "react";
 import { useDispatch } from "react-redux";
@@ -21,7 +21,7 @@ export default function SearchField() {
 
     dispatch(SET_BOOKS(null));
 
-    router.push(`/home?pageId=1&query=${query}`);
+    router.replace(`/home?pageId=1&query=${query}`);
 
     dispatch(SET_LOADING(true));
 

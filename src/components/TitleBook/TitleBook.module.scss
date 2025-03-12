@@ -1,4 +1,14 @@
+@keyframes show {
+  from {
+    height: 0px;
+  }
+  to {
+    height: auto;
+  }
+}
+
 .TitleBook {
+  animation: show 1s;
   position: sticky;
   width: 100vw;
   background: #000000;
@@ -9,7 +19,7 @@
   justify-content: center;
   align-items: center;
   color: rgb(243, 216, 166);
-  padding: 10px;
+  transition: 500ms;
   h4,
   h5 {
     text-align: center;
