@@ -45,7 +45,7 @@ export default function Contents() {
       booksNextPage &&
       !isLoading
     ) {
-      router.replace(`/home?pageId=${Number(pageId) + 1}&query=${query}`);
+      router.replace(`/home?pageId=${booksNextPage}&query=${query}`);
       dispatch(SET_LOADING(true));
     }
   }

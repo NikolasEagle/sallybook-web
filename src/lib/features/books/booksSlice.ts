@@ -18,8 +18,6 @@ export interface StateBooks {
 
       totalItems: number;
 
-      query: string | null;
-
       data:
         | {
             volumeInfo: {
@@ -42,7 +40,7 @@ export interface StateBooks {
       authors: string[] | [];
       publisher: string | null;
       publishedDate: string | null;
-      description: string | null;
+      description: string;
       industryIdentifiers: {
         type: string;
         identifier: string;

@@ -4,20 +4,20 @@ import styles from "./TitleBook.module.scss";
 import { StateBooks } from "@/lib/features/books/booksSlice";
 
 export default function TitleBook() {
-  const selectedBook = useSelector(
-    (state: StateBooks) => state.books.selectedBook
+  const authors = useSelector((state: StateBooks) =>
+    state.books.selectedBook ? state.books.selectedBook.authors : null
   );
-  const title = selectedBook ? selectedBook.title : "";
 
-  const authors = selectedBook ? selectedBook.authors : [];
+  const title = useSelector((state: StateBooks) =>
+    state.books.selectedBook ? state.books.selectedBook.title : ""
+  );
+
   return (
     <div
-      style={
-        title || authors.length > 0 ? { padding: "10px" } : { padding: "0" }
-      }
+      style={title || authors ? { padding: "10px" } : { padding: "0" }}
       className={styles.TitleBook}
     >
-      {authors.length > 0 && <h4>{authors.join(", ")}</h4>}
+      {authors && <h4>{authors.join(", ")}</h4>}
       {title && <h5>{title}</h5>}
     </div>
   );

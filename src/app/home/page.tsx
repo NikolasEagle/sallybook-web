@@ -11,11 +11,7 @@ import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  SET_BOOKS,
-  SET_LOADING,
-  SET_SCROLL,
-} from "@/lib/features/books/booksSlice";
+import { SET_BOOKS, SET_LOADING } from "@/lib/features/books/booksSlice";
 
 import { StateBooks } from "@/lib/features/books/booksSlice";
 
@@ -42,7 +38,11 @@ export default function Home() {
 
       const body = response.data;
 
-      body.data = books ? [...books.data, ...body.data] : [...body.data];
+      body.data = books
+        ? books.currentPage !== pageId
+          ? [...books.data, ...body.data]
+          : [...books.data]
+        : [...body.data];
 
       dispatch(SET_BOOKS(body));
 
