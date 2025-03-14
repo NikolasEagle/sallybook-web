@@ -38,6 +38,8 @@ export default function Home() {
 
       const body = response.data;
 
+      console.log(body);
+
       body.data = books
         ? books.currentPage !== pageId
           ? [...books.data, ...body.data]

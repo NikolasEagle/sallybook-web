@@ -20,8 +20,6 @@ export default function Contents() {
 
   const searchParams = useSearchParams();
 
-  const pageId = searchParams.get("pageId");
-
   const query = searchParams.get("query");
 
   const booksNextPage = useSelector((state: StateBooks) =>

@@ -12,12 +12,7 @@ export default function BookImage() {
   return selectedBook ? (
     <img
       className={styles.BookImage}
-      src={
-        selectedBook.imageLinks
-          ? selectedBook.imageLinks.thumbnail ||
-            selectedBook.imageLinks.smallThumbnail
-          : "/no-image.png"
-      }
+      src={selectedBook.cover || "/no-image.png"}
     />
   ) : null;
 }

@@ -9,18 +9,11 @@ export default function BookDescription() {
     state.books.selectedBook ? state.books.selectedBook.description : null
   );
 
-  const parser = new DOMParser();
-
-  const descDoc = parser.parseFromString(
-    description ? description : "<p></p>",
-    "text/html"
-  );
-
   return (
     description && (
       <div className={styles.BookDescription}>
         <h4>Описание</h4>
-        <p>{descDoc.body.firstChild?.textContent}</p>
+        <p>{description}</p>
       </div>
     )
   );

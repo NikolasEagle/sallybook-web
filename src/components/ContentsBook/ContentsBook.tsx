@@ -1,7 +1,5 @@
 import styles from "./ContentsBook.module.scss";
 
-import { Suspense } from "react";
-
 import BookImage from "../BookImage/BookImage";
 import BookInfo from "../BookInfo/BookInfo";
 import BookDescription from "../BookDescription/BookDescription";

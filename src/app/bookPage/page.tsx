@@ -10,11 +10,13 @@ import { useSearchParams } from "next/navigation";
 
 import { useEffect } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-import { SELECT_BOOK, SET_LOADING } from "@/lib/features/books/booksSlice";
-
-import axios from "axios";
+import {
+  SELECT_BOOK,
+  SET_LOADING,
+  StateBooks,
+} from "@/lib/features/books/booksSlice";
 
 export default function BookPage() {
   const dispatch = useDispatch();
@@ -23,17 +25,15 @@ export default function BookPage() {
 
   const bookId = searchParams.get("bookId");
 
+  const books = useSelector((state: StateBooks) => state.books.books);
+
   async function selectBook(bookId: string | null) {
     try {
       dispatch(SELECT_BOOK(null));
 
-      const url = `/api/book/${bookId}`;
+      const currentBook = books.data.find((book) => bookId === book.id);
 
-      const response = await axios.get(url);
-
-      const body = response.data;
-
-      dispatch(SELECT_BOOK(body));
+      dispatch(SELECT_BOOK(currentBook));
 
       dispatch(SET_LOADING(false));
     } catch (error) {

@@ -3,7 +3,7 @@
 import styles from "./Footer.module.scss";
 
 import ChapterLink from "../ChapterLink/ChapterLink";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, usePathname } from "next/navigation";
 
 const chapters = [
   {
@@ -26,16 +26,22 @@ const chapters = [
 export default function Footer() {
   const searchParams = useSearchParams();
 
+  const pathName = usePathname();
+
   const bookId = searchParams.get("bookId");
 
   return (
-    <footer
-      style={bookId ? { borderRadius: "0" } : { borderRadius: "20px 20px 0 0" }}
-      className={styles.footer}
-    >
-      {chapters.map((chapter) => (
-        <ChapterLink icon={chapter.icon} name={chapter.name} />
-      ))}
-    </footer>
+    pathName !== "/reader" && (
+      <footer
+        style={
+          bookId ? { borderRadius: "0" } : { borderRadius: "20px 20px 0 0" }
+        }
+        className={styles.footer}
+      >
+        {chapters.map((chapter) => (
+          <ChapterLink icon={chapter.icon} name={chapter.name} />
+        ))}
+      </footer>
+    )
   );
 }

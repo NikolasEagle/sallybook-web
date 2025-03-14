@@ -7,15 +7,17 @@ import { useSelector } from "react-redux";
 import { StateBooks } from "@/lib/features/books/booksSlice";
 
 export default function BookCards() {
-  const books = useSelector((state: StateBooks) => state.books.books);
+  const data = useSelector((state: StateBooks) =>
+    state.books.books ? state.books.books.data : []
+  );
 
-  console.log(books);
+  console.log(data);
 
   return (
-    books && (
-      <div className={styles.BookCards}>
-        {books.data && books.data.map((book) => <BookCard data={book} />)}
-      </div>
-    )
+    <div className={styles.BookCards}>
+      {data.map((book) => (
+        <BookCard data={book} />
+      ))}
+    </div>
   );
 }

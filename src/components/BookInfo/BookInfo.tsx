@@ -11,40 +11,16 @@ export default function BookInfo() {
 
   return selectedBook ? (
     <div className={styles.BookInfo}>
-      {selectedBook.publisher && (
+      {selectedBook.addedDate && (
         <div>
-          <h4>Издатель:</h4>
-          <p>{selectedBook.publisher}</p>
-        </div>
-      )}
-      {selectedBook.publishedDate && (
-        <div>
-          <h4>Дата издания:</h4>
-          <p>{selectedBook.publishedDate?.split("-").reverse().join(".")}</p>
-        </div>
-      )}
-      {selectedBook.industryIdentifiers && (
-        <div>
-          <h4>ISBN:</h4>
-          <p>
-            {
-              selectedBook.industryIdentifiers.find(
-                (elem) => elem.type === "ISBN_13"
-              )?.identifier
-            }
-          </p>
-        </div>
-      )}
-      {selectedBook.industryIdentifiers && (
-        <div>
-          <h4>Количество страниц:</h4>
-          <p>{selectedBook.pageCount}</p>
+          <h4>Дата добавления:</h4>
+          <p>{selectedBook.addedDate}</p>
         </div>
       )}
       {selectedBook.categories && (
         <div>
           <h4>Категории:</h4>
-          <p>{selectedBook.categories.slice(0, 1).join(" / ")}</p>
+          <p>{selectedBook.categories.join(", ")}</p>
         </div>
       )}
     </div>

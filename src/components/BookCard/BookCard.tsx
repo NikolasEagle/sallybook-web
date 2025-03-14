@@ -6,15 +6,10 @@ import { useDispatch } from "react-redux";
 
 import { SET_LOADING } from "@/lib/features/books/booksSlice";
 
+import { Data } from "@/lib/features/books/booksSlice";
+
 interface Props {
-  data: {
-    id: string;
-    volumeInfo: {
-      title: string;
-      authors: [];
-      imageLinks: { thumbnail: string; smallThumbnail: string };
-    };
-  };
+  data: Data;
 }
 
 export default function BookCard({ data }: Props) {
@@ -31,21 +26,12 @@ export default function BookCard({ data }: Props) {
 
   return (
     <div onClick={openBook} tabIndex={0} className={styles.BookCard}>
-      <img
-        src={
-          data.volumeInfo.imageLinks
-            ? data.volumeInfo.imageLinks.thumbnail ||
-              data.volumeInfo.imageLinks.smallThumbnail
-            : "/no-image.png"
-        }
-      />
+      <img src={data.cover || "/no-image.png"} />
       <div className={styles.shadow}>
-        {data.volumeInfo.authors && (
-          <p className={styles.author}>
-            {data.volumeInfo.authors.slice(0, 2).join(", ")}
-          </p>
+        {data.authors && (
+          <p className={styles.author}>{data.authors.slice(0, 2).join(", ")}</p>
         )}
-        <p className={styles.title}>{data.volumeInfo.title}</p>
+        <p className={styles.title}>{data.title}</p>
       </div>
     </div>
   );

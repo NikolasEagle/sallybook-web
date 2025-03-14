@@ -8,25 +8,35 @@ const initialState = {
   scrollPosition: localStorage.getItem("scrollPosition")
     ? JSON.parse(localStorage.getItem("scrollPosition"))
     : 0,
-  selectedBook: null,
+  selectedBook: localStorage.getItem("selectedBook")
+    ? JSON.parse(localStorage.getItem("selectedBook"))
+    : null,
 };
+
+export interface Data {
+  id: string;
+
+  addedDate: string;
+
+  title: string;
+
+  authors: string[] | [];
+
+  categories: string[] | [];
+
+  description: string;
+
+  cover: string | null;
+
+  bookFile: string | null;
+}
 
 export interface StateBooks {
   books: {
     books: {
       currentPage: number;
 
-      totalItems: number;
-
-      data:
-        | {
-            volumeInfo: {
-              title: string;
-              authors: [];
-              imageLinks: { thumbnail: string; smallThumbnail: string };
-            };
-          }[]
-        | [];
+      data: Data[];
 
       nextPage: number | null;
     };
@@ -35,32 +45,7 @@ export interface StateBooks {
 
     scrollPosition: number;
 
-    selectedBook: {
-      title: string;
-      authors: string[] | [];
-      publisher: string | null;
-      publishedDate: string | null;
-      description: string;
-      industryIdentifiers: {
-        type: string;
-        identifier: string;
-      }[];
-      pageCount: number;
-      categories: string[];
-      imageLinks: {
-        smallThumbnail: string | undefined;
-
-        thumbnail: string | undefined;
-
-        small: string | undefined;
-
-        medium: string | undefined;
-
-        large: string | undefined;
-
-        extraLarge: string | undefined;
-      };
-    };
+    selectedBook: Data;
   };
 }
 
@@ -81,10 +66,14 @@ const booksSlice = createSlice({
     },
     SELECT_BOOK: (state, action) => {
       state.selectedBook = action.payload;
+      localStorage.setItem("selectedBook", JSON.stringify(action.payload));
+    },
+    SET_BOOKFILE: (state, action) => {
+      state.selectedBook = action.payload;
     },
   },
 });
 
-export const { SET_BOOKS, SET_LOADING, SET_SCROLL, SELECT_BOOK } =
+export const { SET_BOOKS, SET_LOADING, SET_SCROLL, SELECT_BOOK, SET_BOOKFILE } =
   booksSlice.actions;
 export default booksSlice.reducer;

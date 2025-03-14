@@ -15,14 +15,13 @@ export default function ResultsInfo() {
     books && (
       <div
         className={styles.ResultsInfo}
-        style={books.totalItems ? { padding: "10px" } : { padding: "0" }}
+        style={query ? { padding: "10px" } : { padding: "0" }}
       >
         {query && (
           <h4>
-            По запросу - <span>{query?.toUpperCase()}</span> -
-            {books.totalItems
-              ? ` найдено ${books.totalItems} книг`
-              : ` не найдено книг`}
+            {books.data.length > 0
+              ? `Результаты по запросу - ${query.toUpperCase()}`
+              : `По запросу - ${query.toUpperCase()} - не найдено результатов`}
           </h4>
         )}
       </div>
