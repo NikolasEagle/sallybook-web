@@ -17,6 +17,12 @@ import { StateBooks } from "@/lib/features/books/booksSlice";
 
 import axios from "axios";
 
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const API = process.env.API;
+
 export default function Home() {
   const dispatch = useDispatch();
 
@@ -31,8 +37,8 @@ export default function Home() {
   async function setBooks(pageId: number, query: string | null) {
     try {
       const url = query
-        ? `/api/books/search/${query}/${pageId}`
-        : `/api/books/${pageId}`;
+        ? `${API}/api/books/search/${query}/${pageId}`
+        : `${API}/api/books/${pageId}`;
 
       const response = await axios.get(url);
 
