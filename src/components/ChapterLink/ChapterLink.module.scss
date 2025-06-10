@@ -1,4 +1,5 @@
 .ChapterLink {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   width: calc(100% / 2);
@@ -20,7 +21,9 @@
   }
 
   &:hover,
-  &:focus {
+  &:focus,
+  &:active {
     outline: none;
+    font-weight: bold;
   }
 }
