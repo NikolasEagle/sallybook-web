@@ -30,9 +30,12 @@ export default function Home() {
 
   async function setBooks(pageId: number, query: string | null) {
     try {
+
       const url = query
-        ? `http://sallybook-api/api/books/search/${query}/${pageId}`
-        : `http://sallybook-api/api/books/${pageId}`;
+        ? `http://${process.env.NEXT_PUBLIC_SERVER_API_HOST}:${process.env.NEXT_PUBLIC_SERVER_API_PORT}/api/books/search/${query}/${pageId}`
+        : `http://${process.env.NEXT_PUBLIC_SERVER_API_HOST}:${process.env.NEXT_PUBLIC_SERVER_API_PORT}/api/books/${pageId}`;
+
+      console.log(url)
 
       const response = await axios.get(url);
 
