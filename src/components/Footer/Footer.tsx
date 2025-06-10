@@ -10,16 +10,22 @@ const chapters = [
     icon: "/home.svg",
 
     name: "Главная",
+
+    href: "/home"
   },
   {
     icon: "/profile.svg",
 
     name: "Профиль",
+
+    href: "/profile"
   },
   {
     icon: "/settings.svg",
 
     name: "Настройки",
+
+    href: "/settings"
   },
 ];
 
@@ -39,7 +45,7 @@ export default function Footer() {
         className={styles.footer}
       >
         {chapters.map((chapter) => (
-          <ChapterLink icon={chapter.icon} name={chapter.name} />
+          <ChapterLink icon={chapter.icon} name={chapter.name} href={chapter.href}/>
         ))}
       </footer>
     )

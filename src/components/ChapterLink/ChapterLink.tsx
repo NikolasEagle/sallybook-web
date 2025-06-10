@@ -4,11 +4,12 @@ import styles from "./ChapterLink.module.scss";
 interface Props {
   icon: string;
   name: string;
+  href: string;
 }
 
-export default function ChapterLink({ icon, name }: Props) {
+export default function ChapterLink({ icon, name, href }: Props) {
   return (
-    <Link href="/userPage" autoFocus tabIndex={0} className={styles.ChapterLink}>
+    <Link href={href} autoFocus tabIndex={0} className={styles.ChapterLink}>
       <img src={icon} alt={name} />
       <p>{name}</p>
     </Link>
