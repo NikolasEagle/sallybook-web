@@ -24,24 +24,20 @@ export default function Home() {
 
   const pageId: number = Number(searchParams.get("pageId"));
 
-  const query = searchParams.get("query");
+  const query: string | null = searchParams.get("query");
 
   const books = useSelector((state: StateBooks) => state.books.books);
 
-  async function setBooks(pageId: number, query: string | null) {
+  async function setBooks(pageId: number, query: string | null): Promise<void> {
     try {
 
       const url = query
         ? `http://${process.env.NEXT_PUBLIC_SERVER_API_HOST}:${process.env.NEXT_PUBLIC_SERVER_API_PORT}/api/books/search/${query}/${pageId}`
         : `http://${process.env.NEXT_PUBLIC_SERVER_API_HOST}:${process.env.NEXT_PUBLIC_SERVER_API_PORT}/api/books/${pageId}`;
 
-      console.log(url)
-
       const response = await axios.get(url);
 
       const body = response.data;
-
-      console.log(body);
 
       body.data = books
         ? books.currentPage !== pageId
@@ -52,8 +48,11 @@ export default function Home() {
       dispatch(SET_BOOKS(body));
 
       dispatch(SET_LOADING(false));
+
     } catch (error) {
+
       console.log(error);
+
     }
   }
 
