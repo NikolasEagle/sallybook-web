@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./ChapterLink.module.scss";
 
 interface Props {
@@ -7,9 +8,9 @@ interface Props {
 
 export default function ChapterLink({ icon, name }: Props) {
   return (
-    <div autoFocus tabIndex={0} className={styles.ChapterLink}>
+    <Link href="/userPage" autoFocus tabIndex={0} className={styles.ChapterLink}>
       <img src={icon} alt={name} />
       <p>{name}</p>
-    </div>
+    </Link>
   );
 }
