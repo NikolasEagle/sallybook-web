@@ -9,7 +9,12 @@ const initialState = {
 const chaptersSlice = createSlice({
   name: "chapters",
   initialState,
-  reducers: {},
+  reducers: {
+    SET_CURRENT_CHAPTER: (state, action) => {
+      state.currentChapter = action.payload;
+      localStorage.setItem("currentChapter", JSON.stringify(action.payload));
+    },
+  },
 });
 
 export default chaptersSlice.reducer;
