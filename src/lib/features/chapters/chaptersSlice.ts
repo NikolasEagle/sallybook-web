@@ -6,6 +6,10 @@ const initialState = {
     : null,
 };
 
+export interface StateChapters {
+  currentChapter: string;
+}
+
 const chaptersSlice = createSlice({
   name: "chapters",
   initialState,
