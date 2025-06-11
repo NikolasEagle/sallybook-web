@@ -4,7 +4,10 @@ import styles from "./Footer.module.scss";
 
 import ChapterLink from "../ChapterLink/ChapterLink";
 import { useSearchParams, usePathname } from "next/navigation";
+
 import { useDispatch, useSelector } from "react-redux";
+import { SET_CURRENT_CHAPTER } from "@/lib/features/chapters/chaptersSlice";
+import { StateChapters } from "@/lib/features/chapters/chaptersSlice";
 
 const chapters = [
   {
