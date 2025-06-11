@@ -17,4 +17,5 @@ const chaptersSlice = createSlice({
   },
 });
 
+export const { SET_CURRENT_CHAPTER } = chaptersSlice.actions;
 export default chaptersSlice.reducer;
