@@ -11,21 +11,21 @@ const chapters = [
 
     name: "Главная",
 
-    href: "/home"
+    href: "/home",
   },
   {
     icon: "/profile.svg",
 
     name: "Профиль",
 
-    href: "/profile"
+    href: "/profile",
   },
   {
     icon: "/settings.svg",
 
     name: "Настройки",
 
-    href: "/settings"
+    href: "/settings",
   },
 ];
 
@@ -35,7 +35,6 @@ export default function Footer() {
   const pathName = usePathname();
 
   const bookId = searchParams.get("bookId");
-
   return (
     pathName !== "/reader" && (
       <footer
@@ -45,7 +44,11 @@ export default function Footer() {
         className={styles.footer}
       >
         {chapters.map((chapter) => (
-          <ChapterLink icon={chapter.icon} name={chapter.name} href={chapter.href}/>
+          <ChapterLink
+            icon={chapter.icon}
+            name={chapter.name}
+            href={chapter.href}
+          />
         ))}
       </footer>
     )
