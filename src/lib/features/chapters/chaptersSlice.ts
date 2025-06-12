@@ -6,7 +6,35 @@ const initialState = {
     : null,
   chapters: localStorage.getItem("chapters")
     ? JSON.parse(localStorage.getItem("chapters"))
-    : null,
+    : [
+        {
+          icon: "/home.svg",
+
+          name: "Главная",
+
+          href: "/home",
+
+          active: false,
+        },
+        {
+          icon: "/profile.svg",
+
+          name: "Профиль",
+
+          href: "/profile",
+
+          active: false,
+        },
+        {
+          icon: "/settings.svg",
+
+          name: "Настройки",
+
+          href: "/settings",
+
+          active: false,
+        },
+      ],
 };
 
 export interface Chapters {
