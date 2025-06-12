@@ -11,6 +11,8 @@ const initialState = {
         {
           icon: "/home.svg",
 
+          iconActive: "/home_active.svg",
+
           name: "Главная",
 
           href: "/home",
@@ -20,6 +22,8 @@ const initialState = {
         {
           icon: "/profile.svg",
 
+          iconActive: "/profile_active.svg",
+
           name: "Профиль",
 
           href: "/profile",
@@ -28,6 +32,8 @@ const initialState = {
         },
         {
           icon: "/settings.svg",
+
+          iconActive: "/settings_active.svg",
 
           name: "Настройки",
 
