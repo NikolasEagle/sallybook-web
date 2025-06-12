@@ -38,19 +38,21 @@ const initialState = {
       ],
 };
 
-export interface Chapters {
+export interface Chapter {
   icon: string;
 
   iconActive: string;
 
   name: string;
 
+  href: string;
+
   active: boolean;
 }
 
 export interface StateChapters {
   chapters: {
-    chapters: Chapters;
+    chapters: Chapter[];
 
     currentChapter: string;
 
