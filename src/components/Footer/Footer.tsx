@@ -28,13 +28,24 @@ export default function Footer() {
     (state: StateChapters) => state.chapters.chapters
   );
 
+  const currentChapterGlobal = useSelector(
+    (state: StateChapters) => state.chapters.currentChapter
+  );
+
   useEffect(() => {
+    let currentChapter: string;
+
     if (/^\/home/.test(pathName)) {
       dispatch(SET_CURRENT_CHAPTER("home"));
+      currentChapter = "home";
     } else if (/^\/profile/.test(pathName)) {
       dispatch(SET_CURRENT_CHAPTER("profile"));
+      currentChapter = "profile";
     } else if (/^\/settings/.test(pathName)) {
       dispatch(SET_CURRENT_CHAPTER("settings"));
+      currentChapter = "settings";
+    } else {
+      currentChapter = currentChapterGlobal;
     }
 
     dispatch(
@@ -42,7 +53,7 @@ export default function Footer() {
         chapters.map((chapter) => {
           const newChapter = { ...chapter };
 
-          if (chapter.href === pathName) {
+          if (newChapter.href === `/${currentChapter}`) {
             newChapter.active = true;
           } else {
             newChapter.active = false;
