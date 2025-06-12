@@ -50,7 +50,7 @@ export default function FormLogin() {
     <Form
       action={""}
       onSubmit={(event) => login(event)}
-      className={styles.FormRegister}
+      className={styles.FormLogin}
     >
       <FormHeader name={"Вход"} />
       <input
