@@ -7,9 +7,9 @@
 
   align-items: center;
 
-  justify-content: flex-start;
+  justify-content: center;
 
-  height: calc(100svh - 70px * 2);
+  height: 100svh;
 
   @media (max-width: 575px) {
     width: 100%;
