@@ -12,7 +12,6 @@ import {
   SET_LOADING,
   StateRegister,
 } from "@/lib/features/register/registerSlice";
-import { useRouter } from "next/navigation";
 import { SuccessMessage } from "../SuccessMessage/SuccessMessage";
 
 export default function FormRegister() {
