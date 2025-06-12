@@ -1,0 +1,53 @@
+.FormRegister {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+  margin: 20px;
+  input {
+    position: relative;
+    height: 50px;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+    background-color: rgb(243, 216, 166);
+    font-size: 16px;
+    transition: 500ms;
+    &::placeholder {
+      color: #666666;
+    }
+    &:focus {
+      height: 70px;
+    }
+    @media (max-width: 575px) {
+      width: calc(100svw - 40px);
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+      width: 420px;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      width: 420px;
+    }
+
+    @media (min-width: 992px) and (max-width: 1999px) {
+      width: 420px;
+    }
+    @media (min-width: 2000px) {
+      width: 420px;
+    }
+  }
+  button {
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 20px;
+    background: black;
+    color: rgb(243, 216, 166);
+    font-weight: bold;
+    transition: 500ms;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

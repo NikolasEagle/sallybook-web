@@ -1,9 +1,12 @@
 import Form from "next/form";
 
+import styles from "./FormRegister.module.scss";
+
 export default function FormRegister() {
   return (
     <Form
       action={`http://${process.env.NEXT_PUBLIC_HOST_SERVER_AUTH}:${process.env.NEXT_PUBLIC_PORT_SERVER_AUTH}/register`}
+      className={styles.FormRegister}
     >
       <input type="text" name="second_name" placeholder="Фамилия" />
       <input type="text" name="first_name" placeholder="Имя" />
