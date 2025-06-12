@@ -44,6 +44,9 @@ export default function Footer() {
     } else if (/^\/settings/.test(pathName)) {
       dispatch(SET_CURRENT_CHAPTER("settings"));
       currentChapter = "settings";
+    } else if (/^\/bookPage/.test(pathName)) {
+      dispatch(SET_CURRENT_CHAPTER("bookPage"));
+      currentChapter = "bookPage";
     } else {
       currentChapter = currentChapterGlobal;
     }
@@ -53,8 +56,13 @@ export default function Footer() {
         chapters.map((chapter) => {
           const newChapter = { ...chapter };
 
-          if (newChapter.href === `/${currentChapter}`) {
+          const regex = new RegExp(`^\/${currentChapter}`);
+
+          if (regex.test(newChapter.href)) {
             newChapter.active = true;
+            if (currentChapterGlobal === "home") {
+              newChapter.href = `${pathName}?${searchParams}`;
+            }
           } else {
             newChapter.active = false;
           }
@@ -62,7 +70,7 @@ export default function Footer() {
         })
       )
     );
-  }, [pathName]);
+  }, [pathName, searchParams]);
 
   return (
     pathName !== "/reader" && (
@@ -72,15 +80,16 @@ export default function Footer() {
         }
         className={styles.footer}
       >
-        {chapters.map((chapter) => (
-          <ChapterLink
-            icon={chapter.icon}
-            iconActive={chapter.iconActive}
-            name={chapter.name}
-            href={chapter.href}
-            active={chapter.active}
-          />
-        ))}
+        {!/^\/bookPage/.test(pathName) &&
+          chapters.map((chapter) => (
+            <ChapterLink
+              icon={chapter.icon}
+              iconActive={chapter.iconActive}
+              name={chapter.name}
+              href={chapter.href}
+              active={chapter.active}
+            />
+          ))}
       </footer>
     )
   );
