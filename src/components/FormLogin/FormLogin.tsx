@@ -9,8 +9,11 @@ import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import Download from "../Download/Download";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_LOADING, StateLogin } from "@/lib/features/login/loginSlice";
+import { useRouter } from "next/navigation";
 
 export default function FormLogin() {
+  const router = useRouter();
+
   const dispatch = useDispatch();
 
   const isLoading = useSelector((state: StateLogin) => state.login.isLoading);
@@ -44,6 +47,10 @@ export default function FormLogin() {
     }
   }
 
+  function goToRegisterPage() {
+    router.push("/register");
+  }
+
   return isLoading ? (
     <Download />
   ) : (
@@ -69,6 +76,7 @@ export default function FormLogin() {
         placeholder="Пароль"
       />
       <button type="submit">Вход</button>
+      <button onClick={goToRegisterPage}>Регистрация</button>
       <ErrorMessage message={message} />
     </Form>
   );

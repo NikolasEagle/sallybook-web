@@ -13,8 +13,11 @@ import {
   StateRegister,
 } from "@/lib/features/register/registerSlice";
 import { SuccessMessage } from "../SuccessMessage/SuccessMessage";
+import { useRouter } from "next/navigation";
 
 export default function FormRegister() {
+  const router = useRouter();
+
   const dispatch = useDispatch();
 
   const isLoading = useSelector(
@@ -70,6 +73,10 @@ export default function FormRegister() {
     }
   }
 
+  function goToLoginPage() {
+    router.push("/login");
+  }
+
   return isLoading ? (
     <Download />
   ) : success ? (
@@ -118,6 +125,7 @@ export default function FormRegister() {
         placeholder="Повторите пароль"
       />
       <button type="submit">Регистрация</button>
+      <button onClick={goToLoginPage}>Назад</button>
       <ErrorMessage message={message} />
     </Form>
   );
