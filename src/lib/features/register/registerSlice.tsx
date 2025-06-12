@@ -5,7 +5,7 @@ const initialState = {
 };
 
 export interface StateRegister {
-  isLoading: boolean;
+  register: { isLoading: boolean };
 }
 
 const registerSlice = createSlice({
