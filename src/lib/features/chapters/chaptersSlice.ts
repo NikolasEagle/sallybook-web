@@ -62,6 +62,9 @@ const chaptersSlice = createSlice({
   name: "chapters",
   initialState,
   reducers: {
+    SET_LOADING: (state, action) => {
+      state.isLoading = action.payload;
+    },
     SET_CURRENT_CHAPTER: (state, action) => {
       state.currentChapter = action.payload;
       localStorage.setItem("currentChapter", JSON.stringify(action.payload));
@@ -73,5 +76,6 @@ const chaptersSlice = createSlice({
   },
 });
 
-export const { SET_CURRENT_CHAPTER, SET_CHAPTERS } = chaptersSlice.actions;
+export const { SET_LOADING, SET_CURRENT_CHAPTER, SET_CHAPTERS } =
+  chaptersSlice.actions;
 export default chaptersSlice.reducer;
