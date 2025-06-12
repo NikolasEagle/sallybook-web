@@ -1,6 +1,7 @@
 import Form from "next/form";
 
 import styles from "./FormRegister.module.scss";
+import FormHeader from "../FormHeader/FormHeader";
 
 export default function FormRegister() {
   return (
@@ -8,6 +9,7 @@ export default function FormRegister() {
       action={`http://${process.env.NEXT_PUBLIC_HOST_SERVER_AUTH}:${process.env.NEXT_PUBLIC_PORT_SERVER_AUTH}/register`}
       className={styles.FormRegister}
     >
+      <FormHeader name={"Регистрация"} />
       <input required type="text" name="second_name" placeholder="Фамилия" />
       <input required type="text" name="first_name" placeholder="Имя" />
       <input required type="text" name="email" placeholder="Email" />

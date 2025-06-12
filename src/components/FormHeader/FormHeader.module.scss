@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Logo";
+  src: url("../../fonts/logo.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+.FormHeader {
+  display: flex;
+  flex-direction: column;
+  header {
+    display: flex;
+    position: relative;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    align-items: center;
+    gap: 10px;
+    h1 {
+      margin: 0;
+      font-family: "Logo";
+      font-size: 50px;
+    }
+    img {
+      width: 80px;
+      height: 80px;
+    }
+  }
+  main {
+    h2 {
+      text-align: center;
+    }
+  }
+}

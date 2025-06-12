@@ -1,10 +1,19 @@
 import styles from "./FormHeader.module.scss";
 
-export default function FormHeader() {
+interface Props {
+  name: string;
+}
+
+export default function FormHeader({ name }: Props) {
   return (
-    <header className={styles.FormHeader}>
-      <img src="/logo_dark.png" alt="Logo" />
-      <h1>MouseBook</h1>
-    </header>
+    <div className={styles.FormHeader}>
+      <header>
+        <img src="/logo_dark.png" alt="Logo" />
+        <h1>MouseBook</h1>
+      </header>
+      <main>
+        <h2>{name}</h2>
+      </main>
+    </div>
   );
 }
