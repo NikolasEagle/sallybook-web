@@ -17,8 +17,13 @@ export default function Header() {
     router.back();
   }
 
+  const regex = new RegExp(`^${pathName}`);
+
   return (
-    pathName !== "/reader" && (
+    (regex.test("/home") ||
+      regex.test("/bookPage") ||
+      regex.test("/profile") ||
+      regex.test("/settings")) && (
       <header className={styles.header}>
         {bookId && (
           <button onClick={returnBack} className={styles.back}></button>

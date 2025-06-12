@@ -32,6 +32,8 @@ export default function Footer() {
     (state: StateChapters) => state.chapters.currentChapter
   );
 
+  const regexFooter = new RegExp(`^${pathName}`);
+
   useEffect(() => {
     let currentChapter: string;
 
@@ -73,7 +75,10 @@ export default function Footer() {
   }, [pathName, searchParams]);
 
   return (
-    pathName !== "/reader" && (
+    (regexFooter.test("/home") ||
+      regexFooter.test("/bookPage") ||
+      regexFooter.test("/profile") ||
+      regexFooter.test("/settings")) && (
       <footer
         style={
           bookId ? { borderRadius: "0" } : { borderRadius: "20px 20px 0 0" }
