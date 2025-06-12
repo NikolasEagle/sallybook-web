@@ -46,7 +46,8 @@
     color: rgb(243, 216, 166);
     font-weight: bold;
     transition: 500ms;
-    &:hover {
+    &:hover,
+    &:focus {
       transform: scale(1.05);
     }
   }
