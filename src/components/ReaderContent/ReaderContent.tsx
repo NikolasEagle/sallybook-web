@@ -15,13 +15,11 @@ export default function ReaderContent() {
     (state: StateBooks) => state.books.selectedBook
   );
 
-  console.log(selectedBook.bookFile);
-
   return (
     <div className={styles.ReaderContent}>
       <ReactReader
         title={selectedBook.title}
-        url={selectedBook.bookFile}
+        url={`http://${process.env.NEXT_PUBLIC_SERVER_API_HOST}:${process.env.NEXT_PUBLIC_SERVER_API_PORT}${selectedBook.bookFile}`}
         epubInitOptions={{
           openAs: "epub",
         }}
