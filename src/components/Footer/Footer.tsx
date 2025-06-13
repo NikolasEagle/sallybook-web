@@ -49,6 +49,12 @@ export default function Footer() {
     } else if (/^\/bookPage/.test(pathName)) {
       dispatch(SET_CURRENT_CHAPTER("bookPage"));
       currentChapter = "bookPage";
+    } else if (/^\/register/.test(pathName)) {
+      dispatch(SET_CURRENT_CHAPTER("register"));
+      currentChapter = "register";
+    } else if (/^\/login/.test(pathName)) {
+      dispatch(SET_CURRENT_CHAPTER("login"));
+      currentChapter = "login";
     } else {
       currentChapter = currentChapterGlobal;
     }
