@@ -10,6 +10,7 @@ import Download from "../Download/Download";
 import { useDispatch, useSelector } from "react-redux";
 import { SET_LOADING, StateLogin } from "@/lib/features/login/loginSlice";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function FormLogin() {
   const router = useRouter();
@@ -49,37 +50,38 @@ export default function FormLogin() {
     }
   }
 
-  function goToRegisterPage() {
-    router.push("/register");
-  }
-
   return isLoading ? (
     <Download />
   ) : (
-    <Form
-      action={""}
-      onSubmit={(event) => login(event)}
-      className={styles.FormLogin}
-    >
-      <FormHeader name={"Вход"} />
-      <input
-        autoComplete="off"
-        pattern="^\S+@\S+\.\S+$"
-        required
-        type="text"
-        name="email"
-        placeholder="Email"
-      />
-      <input
-        autoComplete="off"
-        required
-        type="password"
-        name="password"
-        placeholder="Пароль"
-      />
-      <button type="submit">Вход</button>
-      <button onClick={goToRegisterPage}>Регистрация</button>
-      <ErrorMessage message={message} />
-    </Form>
+    <div className={styles.FormLogin}>
+      <Form
+        className={styles.form}
+        action={""}
+        onSubmit={(event) => login(event)}
+      >
+        <FormHeader name={"Вход"} />
+        <input
+          autoComplete="off"
+          pattern="^\S+@\S+\.\S+$"
+          required
+          type="text"
+          name="email"
+          placeholder="Email"
+        />
+        <input
+          autoComplete="off"
+          required
+          type="password"
+          name="password"
+          placeholder="Пароль"
+        />
+        <button type="submit">Вход</button>
+
+        <ErrorMessage message={message} />
+      </Form>
+      <Link className={styles.linkToRegister} href={"/register"}>
+        Регистрация
+      </Link>
+    </div>
   );
 }
