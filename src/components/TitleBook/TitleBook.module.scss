@@ -1,14 +1,4 @@
-@keyframes show {
-  from {
-    height: 0px;
-  }
-  to {
-    height: auto;
-  }
-}
-
 .TitleBook {
-  animation: show 1s;
   position: sticky;
   width: 100vw;
   background: #000000;

@@ -14,11 +14,11 @@ export default function TitleBook() {
 
   return (
     <div
-      style={title || authors ? { padding: "10px" } : { padding: "0" }}
+      style={title || authors ? { padding: "10px" } : { padding: "0px" }}
       className={styles.TitleBook}
     >
-      {authors && <h4>{authors.join(", ")}</h4>}
-      {title && <h5>{title}</h5>}
+      {authors ? <h4>{authors.join(", ")}</h4> : <h4></h4>}
+      {title ? <h5>{title}</h5> : <h5></h5>}
     </div>
   );
 }
