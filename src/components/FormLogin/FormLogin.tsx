@@ -32,10 +32,12 @@ export default function FormLogin() {
       const response = await fetch(url, {
         method: "POST",
         body: formData,
+        credentials: "include",
       });
 
       if (response.status === 200) {
         dispatch(SET_LOADING(false));
+        console.log(response.headers);
       } else if (response.status === 401 || response.status === 500) {
         dispatch(SET_LOADING(false));
         throw new Error(await response.text());
