@@ -28,6 +28,8 @@ export default function FormLogin() {
 
     const formData = new FormData(event.currentTarget);
 
+    setMessage("");
+
     try {
       dispatch(SET_LOADING(true));
       const response = await fetch(url, {
@@ -76,12 +78,11 @@ export default function FormLogin() {
           placeholder="Пароль"
         />
         <button type="submit">Вход</button>
-
-        <ErrorMessage message={message} />
       </Form>
       <Link className={styles.linkToRegister} href={"/register"}>
         Регистрация
       </Link>
+      <ErrorMessage message={message} />
     </div>
   );
 }

@@ -38,6 +38,8 @@ export default function FormRegister() {
 
     const formData = new FormData(event.currentTarget);
 
+    setMessage("");
+
     setEmail(String(formData.get("email")));
 
     const password = formData.get("password");
@@ -123,12 +125,11 @@ export default function FormRegister() {
           placeholder="Повторите пароль"
         />
         <button type="submit">Регистрация</button>
-
-        <ErrorMessage message={message} />
       </Form>
       <Link className={styles.linkToLogin} href={"/login"}>
         На страницу входа
       </Link>
+      <ErrorMessage message={message} />
     </div>
   );
 }
