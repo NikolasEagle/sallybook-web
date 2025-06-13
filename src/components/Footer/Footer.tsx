@@ -20,8 +20,6 @@ export default function Footer() {
 
   const pathName = usePathname();
 
-  const bookId = searchParams.get("bookId");
-
   const dispatch = useDispatch();
 
   const chapters = useSelector(
@@ -82,15 +80,9 @@ export default function Footer() {
 
   return (
     (regexFooter.test("/home") ||
-      regexFooter.test("/bookPage") ||
       regexFooter.test("/profile") ||
       regexFooter.test("/settings")) && (
-      <footer
-        style={
-          bookId ? { borderRadius: "0" } : { borderRadius: "20px 20px 0 0" }
-        }
-        className={styles.footer}
-      >
+      <footer className={styles.footer}>
         {!/^\/bookPage/.test(pathName) &&
           chapters.map((chapter) => (
             <ChapterLink
