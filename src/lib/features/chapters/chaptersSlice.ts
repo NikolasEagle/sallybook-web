@@ -30,7 +30,7 @@ const initialState = {
 
           active: false,
         },
-        {
+        /*{
           icon: "/settings.svg",
 
           iconActive: "/settings_active.svg",
@@ -40,7 +40,7 @@ const initialState = {
           href: "/settings",
 
           active: false,
-        },
+        },*/
       ],
 };
 
