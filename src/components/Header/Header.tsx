@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./Header.module.scss";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
@@ -35,7 +36,7 @@ export default function Header() {
         {bookId && (
           <button onClick={returnBack} className={styles.back}></button>
         )}
-        <img src="/logo.png" alt="Logo" />
+        <Image width={"200"} height={"200"} src="/logo.png" alt="Logo" />
         <h1>MouseBook</h1>
       </header>
     )

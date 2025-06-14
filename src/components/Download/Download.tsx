@@ -16,17 +16,28 @@ export default function Download() {
 
   const regexLogin = new RegExp(`^\/login`);
 
+  const isLoadingBooks = useSelector(
+    (state: StateBooks) => state.books.isLoading
+  );
+
+  const isLoadingRegister = useSelector(
+    (state: StateRegister) => state.register.isLoading
+  );
+
+  const isLoadingLogin = useSelector(
+    (state: StateLogin) => state.login.isLoading
+  );
+
   let isLoading: boolean;
 
   if (regex.test(pathName)) {
-    isLoading = useSelector((state: StateBooks) => state.books.isLoading);
+    isLoading = isLoadingBooks;
   } else if (regexRegister.test(pathName)) {
-    isLoading = useSelector((state: StateRegister) => state.register.isLoading);
+    isLoading = isLoadingRegister;
   } else if (regexLogin.test(pathName)) {
-    isLoading = useSelector((state: StateLogin) => state.login.isLoading);
-  } else {
-    isLoading = false;
+    isLoading = isLoadingLogin;
   }
+  isLoading = false;
 
   return (
     <div

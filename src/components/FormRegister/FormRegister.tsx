@@ -13,11 +13,9 @@ import {
   StateRegister,
 } from "@/lib/features/register/registerSlice";
 import { SuccessMessage } from "../SuccessMessage/SuccessMessage";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 export default function FormRegister() {
-  const router = useRouter();
 
   const dispatch = useDispatch();
 

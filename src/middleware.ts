@@ -20,7 +20,8 @@ async function checkAuth(): Promise<boolean> {
     }
 
     return false;
-  } catch (error) {
+  } catch (err) {
+    console.error(err);
     return false;
   }
 }

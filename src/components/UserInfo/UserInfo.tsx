@@ -9,6 +9,7 @@ import { RESET_BOOKS } from "@/lib/features/books/booksSlice";
 import { RESET_CHAPTERS } from "@/lib/features/chapters/chaptersSlice";
 import { RESET_LOGIN } from "@/lib/features/login/loginSlice";
 import { RESET_REGISTER } from "@/lib/features/register/registerSlice";
+import Image from "next/image";
 
 export default function UserInfo() {
   const router = useRouter();
@@ -36,7 +37,9 @@ export default function UserInfo() {
         setSecondName(second_name);
         setFirstName(first_name);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   async function logout() {
@@ -54,7 +57,9 @@ export default function UserInfo() {
         dispatch(RESET_REGISTER());
         router.push("/login");
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   useEffect(() => {
@@ -63,7 +68,13 @@ export default function UserInfo() {
 
   return (
     <div className={styles.UserInfo}>
-      <img className={styles.avatar} src="/avatar.png" alt="avatar" />
+      <Image
+        width={"200"}
+        height={"200"}
+        className={styles.avatar}
+        src="/avatar.png"
+        alt="avatar"
+      />
       <h2>{secondName}</h2>
       <h2>{firstName}</h2>
       <button onClick={logout} className={styles.logout}>

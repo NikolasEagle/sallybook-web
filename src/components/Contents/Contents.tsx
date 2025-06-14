@@ -52,7 +52,7 @@ export default function Contents() {
     const contents: HTMLDivElement | null = contentsRef.current;
 
     contents!.scrollTop = scrollPosition;
-  }, []);
+  }, [booksNextPage]);
 
   return (
     <div

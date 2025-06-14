@@ -11,12 +11,10 @@ export default function BookCards() {
     state.books.books ? state.books.books.data : []
   );
 
-  console.log(data);
-
   return (
     <div className={styles.BookCards}>
-      {data.map((book) => (
-        <BookCard data={book} />
+      {data.map((book, index) => (
+        <BookCard key={index} data={book} />
       ))}
     </div>
   );

@@ -14,6 +14,7 @@ import {
 
 import { StateChapters } from "@/lib/features/chapters/chaptersSlice";
 import { useEffect } from "react";
+import { nanoid } from "nanoid";
 
 export default function Footer() {
   const searchParams = useSearchParams();
@@ -24,10 +25,6 @@ export default function Footer() {
 
   const chapters = useSelector(
     (state: StateChapters) => state.chapters.chapters
-  );
-
-  const currentChapterGlobal = useSelector(
-    (state: StateChapters) => state.chapters.currentChapter
   );
 
   const regex = new RegExp(`^${pathName}`);
@@ -61,6 +58,7 @@ export default function Footer() {
         {!/^\/bookPage/.test(pathName) &&
           chapters.map((chapter) => (
             <ChapterLink
+              key={nanoid()}
               icon={chapter.icon}
               iconActive={chapter.iconActive}
               name={chapter.name}

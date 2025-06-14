@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./FormHeader.module.scss";
 
 interface Props {
@@ -8,7 +9,7 @@ export default function FormHeader({ name }: Props) {
   return (
     <div className={styles.FormHeader}>
       <header>
-        <img src="/logo_dark.png" alt="Logo" />
+        <Image width={"200"} height={"200"} src="/logo_dark.png" alt="Logo" />
         <h1>MouseBook</h1>
       </header>
       <main>

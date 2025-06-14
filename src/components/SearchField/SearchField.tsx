@@ -1,6 +1,6 @@
 import styles from "./SearchField.module.scss";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { FormEvent } from "react";
 import { useDispatch } from "react-redux";
