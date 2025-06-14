@@ -41,7 +41,10 @@ export async function middleware(request: NextRequest) {
   }
 
   if (regex.test(pathname) || pathname === "/") {
-    return NextResponse.redirect(new URL("/home", request.url));
+    const homeURL = new URL("/home", request.url);
+    homeURL.searchParams.set("pageId", "1");
+    homeURL.searchParams.set("query", "");
+    return NextResponse.redirect(homeURL);
   }
 
   return NextResponse.next();
