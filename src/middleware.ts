@@ -40,7 +40,7 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  if (regex.test(pathname)) {
+  if (regex.test(pathname) || pathname === "/") {
     return NextResponse.redirect(new URL("/home", request.url));
   }
 
@@ -49,6 +49,7 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
+    "/",
     "/login",
     "/register",
     "/home",
