@@ -71,9 +71,16 @@ const booksSlice = createSlice({
     SET_BOOKFILE: (state, action) => {
       state.selectedBook = action.payload;
     },
+    RESET_BOOKS: () => initialState,
   },
 });
 
-export const { SET_BOOKS, SET_LOADING, SET_SCROLL, SELECT_BOOK, SET_BOOKFILE } =
-  booksSlice.actions;
+export const {
+  SET_BOOKS,
+  SET_LOADING,
+  SET_SCROLL,
+  SELECT_BOOK,
+  SET_BOOKFILE,
+  RESET_BOOKS,
+} = booksSlice.actions;
 export default booksSlice.reducer;

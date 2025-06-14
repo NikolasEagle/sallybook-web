@@ -15,8 +15,9 @@ const loginSlice = createSlice({
     SET_LOADING: (state, action) => {
       state.isLoading = action.payload;
     },
+    RESET_LOGIN: () => initialState,
   },
 });
 
-export const { SET_LOADING } = loginSlice.actions;
+export const { SET_LOADING, RESET_LOGIN } = loginSlice.actions;
 export default loginSlice.reducer;

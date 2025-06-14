@@ -15,8 +15,9 @@ const registerSlice = createSlice({
     SET_LOADING: (state, action) => {
       state.isLoading = action.payload;
     },
+    RESET_REGISTER: () => initialState,
   },
 });
 
-export const { SET_LOADING } = registerSlice.actions;
+export const { SET_LOADING, RESET_REGISTER } = registerSlice.actions;
 export default registerSlice.reducer;

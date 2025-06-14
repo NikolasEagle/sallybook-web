@@ -81,9 +81,14 @@ const chaptersSlice = createSlice({
       state.chapters = action.payload;
       localStorage.setItem("chapters", JSON.stringify(action.payload));
     },
+    RESET_CHAPTERS: () => initialState,
   },
 });
 
-export const { SET_LOADING, SET_CURRENT_CHAPTER, SET_CHAPTERS } =
-  chaptersSlice.actions;
+export const {
+  SET_LOADING,
+  SET_CURRENT_CHAPTER,
+  SET_CHAPTERS,
+  RESET_CHAPTERS,
+} = chaptersSlice.actions;
 export default chaptersSlice.reducer;
