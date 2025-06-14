@@ -28,7 +28,7 @@ export default function Header() {
         style={
           regex.test("/profile")
             ? { borderRadius: "0 0 20px 20px" }
-            : { borderRadius: "o" }
+            : { borderRadius: "0" }
         }
         className={styles.header}
       >
