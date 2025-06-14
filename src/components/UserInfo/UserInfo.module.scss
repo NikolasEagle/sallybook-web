@@ -6,4 +6,47 @@
   justify-content: center;
 
   align-items: center;
+
+  gap: 15px;
+
+  .avatar {
+    @media (max-width: 575px) {
+      width: 120px;
+      height: 120px;
+    }
+
+    @media (min-width: 576px) and (max-width: 767px) {
+      width: 250px;
+      height: 250px;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      width: 250px;
+      height: 250px;
+    }
+
+    @media (min-width: 992px) and (max-width: 1999px) {
+      width: 250px;
+      height: 250px;
+    }
+    @media (min-width: 2000px) {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  .logout {
+    padding: 20px;
+    border-radius: 20px;
+    background: black;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 500ms;
+    &:hover,
+    &:focus,
+    &:active {
+      transform: scale(1.05);
+    }
+  }
 }
