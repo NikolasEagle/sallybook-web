@@ -24,7 +24,14 @@ export default function Header() {
       regex.test("/bookPage") ||
       regex.test("/profile") ||
       regex.test("/settings")) && (
-      <header className={styles.header}>
+      <header
+        style={
+          regex.test("/profile")
+            ? { borderRadius: "0 0 20px 20px" }
+            : { borderRadius: "o" }
+        }
+        className={styles.header}
+      >
         {bookId && (
           <button onClick={returnBack} className={styles.back}></button>
         )}
