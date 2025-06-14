@@ -40,7 +40,7 @@ export default function FormLogin() {
 
       if (response.status === 200) {
         dispatch(SET_LOADING(false));
-        router.push("/home");
+        router.push("/");
       } else if (response.status === 401 || response.status === 500) {
         dispatch(SET_LOADING(false));
         throw new Error(await response.text());
