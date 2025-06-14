@@ -30,31 +30,11 @@ export default function Footer() {
     (state: StateChapters) => state.chapters.currentChapter
   );
 
-  const regexFooter = new RegExp(`^${pathName}`);
+  const regex = new RegExp(`^${pathName}`);
 
   useEffect(() => {
-    let currentChapter: string;
-
-    if (/^\/home/.test(pathName)) {
-      dispatch(SET_CURRENT_CHAPTER("home"));
-      currentChapter = "home";
-    } else if (/^\/profile/.test(pathName)) {
-      dispatch(SET_CURRENT_CHAPTER("profile"));
-      currentChapter = "profile";
-    } else if (/^\/settings/.test(pathName)) {
-      dispatch(SET_CURRENT_CHAPTER("settings"));
-      currentChapter = "settings";
-    } else if (/^\/bookPage/.test(pathName)) {
-      dispatch(SET_CURRENT_CHAPTER("bookPage"));
-      currentChapter = "bookPage";
-    } else if (/^\/register/.test(pathName)) {
-      dispatch(SET_CURRENT_CHAPTER("register"));
-      currentChapter = "register";
-    } else if (/^\/login/.test(pathName)) {
-      dispatch(SET_CURRENT_CHAPTER("login"));
-      currentChapter = "login";
-    } else {
-      currentChapter = currentChapterGlobal;
+    if (/^\/home|profile|settings/.test(pathName)) {
+      dispatch(SET_CURRENT_CHAPTER(pathName.replace("/", "")));
     }
 
     dispatch(
@@ -62,13 +42,8 @@ export default function Footer() {
         chapters.map((chapter) => {
           const newChapter = { ...chapter };
 
-          const regex = new RegExp(`^\/${currentChapter}`);
-
           if (regex.test(newChapter.href)) {
             newChapter.active = true;
-            if (currentChapterGlobal === "home") {
-              newChapter.href = `${pathName}?${searchParams}`;
-            }
           } else {
             newChapter.active = false;
           }
@@ -79,9 +54,9 @@ export default function Footer() {
   }, [pathName, searchParams]);
 
   return (
-    (regexFooter.test("/home") ||
-      regexFooter.test("/profile") ||
-      regexFooter.test("/settings")) && (
+    (regex.test("/home") ||
+      regex.test("/profile") ||
+      regex.test("/settings")) && (
       <footer className={styles.footer}>
         {!/^\/bookPage/.test(pathName) &&
           chapters.map((chapter) => (
