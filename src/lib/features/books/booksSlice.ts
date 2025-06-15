@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   books: localStorage.getItem("books")
-    ? JSON.parse(localStorage.getItem("books"))
+    ? JSON.parse(localStorage.getItem("books") ?? "")
     : null,
   isLoading: true,
   scrollPosition: localStorage.getItem("scrollPosition")
-    ? JSON.parse(localStorage.getItem("scrollPosition"))
+    ? JSON.parse(localStorage.getItem("scrollPosition") ?? "")
     : 0,
   selectedBook: localStorage.getItem("selectedBook")
-    ? JSON.parse(localStorage.getItem("selectedBook"))
+    ? JSON.parse(localStorage.getItem("selectedBook") ?? "")
     : null,
 };
 

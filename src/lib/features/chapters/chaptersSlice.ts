@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoading: true,
   currentChapter: localStorage.getItem("currentChapter")
-    ? JSON.parse(localStorage.getItem("currentChapter"))
+    ? JSON.parse(localStorage.getItem("currentChapter") ?? "")
     : null,
   chapters: localStorage.getItem("chapters")
-    ? JSON.parse(localStorage.getItem("chapters"))
+    ? JSON.parse(localStorage.getItem("chapters") ?? "")
     : [
         {
           icon: "/home.svg",
