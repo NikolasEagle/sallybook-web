@@ -36,8 +36,9 @@ export default function Download() {
     isLoading = isLoadingRegister;
   } else if (regexLogin.test(pathName)) {
     isLoading = isLoadingLogin;
+  } else {
+    isLoading = false;
   }
-  isLoading = false;
 
   return (
     <div
