@@ -4,7 +4,7 @@ import type { NextRequest } from "next/server";
 import { cookies } from "next/headers";
 
 async function checkAuth(): Promise<boolean> {
-  const url = `http://${process.env.NEXT_PUBLIC_HOST_SERVER_AUTH}:${process.env.NEXT_PUBLIC_PORT_SERVER_AUTH}/check_auth`;
+  const url = `${process.env.URL}/auth/check_auth`;
 
   const nextCookies = await cookies();
 

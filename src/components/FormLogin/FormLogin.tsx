@@ -21,7 +21,7 @@ export default function FormLogin() {
 
   const [message, setMessage] = useState<string>("");
 
-  const url = `http://${process.env.NEXT_PUBLIC_HOST_SERVER_AUTH}:${process.env.NEXT_PUBLIC_PORT_SERVER_AUTH}/login`;
+  const url = `/auth/login`;
 
   async function login(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

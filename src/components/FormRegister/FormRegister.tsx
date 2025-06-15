@@ -16,7 +16,6 @@ import { SuccessMessage } from "../SuccessMessage/SuccessMessage";
 import Link from "next/link";
 
 export default function FormRegister() {
-
   const dispatch = useDispatch();
 
   const isLoading = useSelector(
@@ -29,7 +28,7 @@ export default function FormRegister() {
 
   const [email, setEmail] = useState<string>("");
 
-  const url = `http://${process.env.NEXT_PUBLIC_HOST_SERVER_AUTH}:${process.env.NEXT_PUBLIC_PORT_SERVER_AUTH}/register`;
+  const url = `/auth/register`;
 
   async function register(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();

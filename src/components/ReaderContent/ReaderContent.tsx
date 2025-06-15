@@ -19,7 +19,7 @@ export default function ReaderContent() {
     <div className={styles.ReaderContent}>
       <ReactReader
         title={selectedBook.title}
-        url={`http://${process.env.NEXT_PUBLIC_SERVER_API_HOST}:${process.env.NEXT_PUBLIC_SERVER_API_PORT}${selectedBook.bookFile}`}
+        url={`/api/${selectedBook.bookFile}`}
         epubInitOptions={{
           openAs: "epub",
         }}

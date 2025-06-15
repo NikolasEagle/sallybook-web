@@ -21,7 +21,7 @@ export default function UserInfo() {
   const [secondName, setSecondName] = useState<string>("");
 
   async function getUserInfo() {
-    const url = `http://${process.env.NEXT_PUBLIC_HOST_SERVER_AUTH}:${process.env.NEXT_PUBLIC_PORT_SERVER_AUTH}/check_auth`;
+    const url = `/auth/check_auth`;
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -43,7 +43,7 @@ export default function UserInfo() {
   }
 
   async function logout() {
-    const url = `http://${process.env.NEXT_PUBLIC_HOST_SERVER_AUTH}:${process.env.NEXT_PUBLIC_PORT_SERVER_AUTH}/logout`;
+    const url = `/auth/logout`;
     try {
       const response = await fetch(url, {
         method: "POST",

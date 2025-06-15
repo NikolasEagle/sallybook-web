@@ -30,10 +30,9 @@ export default function Home() {
 
   async function setBooks(pageId: number, query: string | null): Promise<void> {
     try {
-
       const url = query
-        ? `http://${process.env.NEXT_PUBLIC_SERVER_API_HOST}:${process.env.NEXT_PUBLIC_SERVER_API_PORT}/api/books/search/${query}/${pageId}`
-        : `http://${process.env.NEXT_PUBLIC_SERVER_API_HOST}:${process.env.NEXT_PUBLIC_SERVER_API_PORT}/api/books/${pageId}`;
+        ? `/api/api/books/search/${query}/${pageId}`
+        : `/api/api/books/${pageId}`;
 
       const response = await axios.get(url);
 
@@ -48,11 +47,8 @@ export default function Home() {
       dispatch(SET_BOOKS(body));
 
       dispatch(SET_LOADING(false));
-
     } catch (error) {
-
       console.log(error);
-
     }
   }
 
