@@ -40,6 +40,9 @@ export default function Footer() {
           const newChapter = { ...chapter };
 
           if (regex.test(newChapter.href)) {
+            if (pathName === "/home") {
+              newChapter.href = `${pathName}?${searchParams}`;
+            }
             newChapter.active = true;
           } else {
             newChapter.active = false;
