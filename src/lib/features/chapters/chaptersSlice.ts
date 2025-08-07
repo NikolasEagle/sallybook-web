@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  isLoading: true,
-  currentChapter: localStorage.getItem("currentChapter")
+let currentChapter;
+let chapters;
+
+if (typeof window !== "undefined") {
+  currentChapter = localStorage.getItem("currentChapter")
     ? JSON.parse(localStorage.getItem("currentChapter") ?? "")
-    : null,
-  chapters: localStorage.getItem("chapters")
+    : null;
+  chapters = localStorage.getItem("chapters")
     ? JSON.parse(localStorage.getItem("chapters") ?? "")
     : [
         {
@@ -41,7 +43,13 @@ const initialState = {
 
           active: false,
         },*/
-      ],
+      ];
+}
+
+const initialState = {
+  isLoading: true,
+  currentChapter: currentChapter,
+  chapters: chapters,
 };
 
 export interface Chapter {
