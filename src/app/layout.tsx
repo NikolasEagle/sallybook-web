@@ -7,6 +7,7 @@ import ReduxProvider from "./ReduxProvider";
 
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,17 +34,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <Head>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ReduxProvider>
-          <Header />
-          {children}
-          <Footer />
-        </ReduxProvider>
-      </body>
-    </html>
+    <Suspense>
+      <html lang="en">
+        <Head>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <ReduxProvider>
+            <Header />
+            {children}
+            <Footer />
+          </ReduxProvider>
+        </body>
+      </html>
+    </Suspense>
   );
 }
